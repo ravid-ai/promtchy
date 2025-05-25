@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرامتچی</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-microchip"></i><i class="fas fa-brain"></i> پرامتچی!</h1>
+            <p>پرامتچی کارشو بلده. ایده‌تو بده، پرامپت خفن تحویل بگیر!</p>
+        </header>
+
+        <main class="main-layout">
+            <div class="input-panel">
+                <h2><i class="fas fa-edit"></i> ایده اولیه‌ات رو اینجا بنویس</h2>
+                <textarea id="userInput" placeholder="مثلاً: یه گربه فضانورد که داره روی ماه گیتار می‌زنه در حالی که زمین تو پس‌زمینه می‌درخشه..." aria-label="ایده اولیه برای پرامپت"></textarea>
+
+                <div class="ai-target-selector">
+                    <label for="aiTypeSelector">این پرامپت برای چه نوع هوش مصنوعی ساخته بشه؟</label>
+                    <select id="aiTypeSelector" aria-label="انتخاب نوع هوش مصنوعی مقصد">
+                        <option value="image" selected>🖼️ عکس‌ساز (مثل Midjourney, DALL-E)</option>
+                        <option value="video">🎬 ویدیو‌ساز (مثل Runway, Pika)</option>
+                        <option value="research">🔬 تحقیقات و تولید متن (مثل خود Gemini, ChatGPT)</option>
+                    </select>
+                </div>
+
+                <div class="options" id="visualOptions">
+                    <select id="styleSelector" aria-label="انتخاب سبک بصری یا هنری (اختیاری)">
+                        <option value="">سبک بصری/هنری خاصی مد نظرته؟ (اختیاری)</option>
+                        <option value="Photorealistic">واقع‌گرایانه (Photorealistic)</option>
+                        <option value="Digital Painting">نقاشی دیجیتال (Digital Painting)</option>
+                        <option value="Cinematic">سینمایی (Cinematic)</option>
+                        <option value="Fantasy Art">هنر فانتزی (Fantasy Art)</option>
+                        <option value="Cyberpunk">سایبرپانک (Cyberpunk)</option>
+                        <option value="Anime/Manga">انیمه/مانگا (Anime/Manga)</option>
+                        <option value="Documentary Style">سبک مستند (برای ویدیو)</option>
+                        <option value="VFX Heavy">جلوه‌های ویژه سنگین (برای ویدیو)</option>
+                        <option value="Low Poly">Low Poly</option>
+                        <option value="Impressionistic">امپرسیونیستی (Impressionistic)</option>
+                        <option value="Concept Art">هنر مفهومی (Concept Art)</option>
+                        <option value="Steampunk">استیم‌پانک (Steampunk)</option>
+                        <option value="Ultra-Realistic CGI">فوق واقع‌گرایانه CGI</option>
+                        <option value="Vintage Photography">عکاسی قدیمی (Vintage)</option>
+                        <option value="Watercolor">آبرنگ (Watercolor)</option>
+                        <option value="Pixel Art">هنر پیکسلی (Pixel Art)</option>
+                    </select>
+                    <select id="moodSelector" aria-label="انتخاب مود و اتمسفر (اختیاری)">
+                        <option value="">چه مود و اتمسفری داشته باشه؟ (اختیاری)</option>
+                        <option value="Epic & Grandiose">حماسی و باشکوه</option>
+                        <option value="Mysterious & Eerie">مرموز و وهم‌آور</option>
+                        <option value="Joyful & Uplifting">شاد و نشاط‌آور</option>
+                        <option value="Dark & Intense">تاریک و پرتنش</option>
+                        <option value="Calm & Serene">آرام و لطیف</option>
+                        <option value="Vibrant & Energetic">پرجنب‌وجوش و پرانرژی</option>
+                        <option value="Nostalgic & Wistful">نوستالژیک و حسرت‌انگیز</option>
+                        <option value="Ethereal & Dreamlike">اثیری و رویاگونه</option>
+                        <option value="Whimsical & Playful">فانتزی و بازیگوش</option>
+                        <option value="Serious & Formal">جدی و رسمی (برای تحقیق)</option>
+                        <option value="Informative & Objective">اطلاعاتی و بی‌طرف (برای تحقیق)</option>
+                    </select>
+                </div>
+                <div class="options" id="researchOptions" style="display: none;">
+                    <select id="outputFormatSelector" aria-label="انتخاب فرمت خروجی تحقیق (اختیاری)">
+                        <option value="">چه فرمتی برای خروجی تحقیق می‌خوای؟ (اختیاری)</option>
+                        <option value="Detailed Report">گزارش مشروح و کامل</option>
+                        <option value="Comparative Analysis">تحلیل تطبیقی (مقایسه‌ای)</option>
+                        <option value="Step-by-step Explanation">توضیح گام‌به‌گام</option>
+                        <option value="Literature Review">مرور ادبیات (Literature Review)</option>
+                        <option value="Pros and Cons List">لیست مزایا و معایب</option>
+                        <option value="Executive Summary">خلاصه اجرایی (چکیده مدیریتی)</option>
+                        <option value="FAQ List">لیست پرسش و پاسخ متداول (FAQ)</option>
+                        <option value="Bullet-point Summary">خلاصه نکته‌وار (Bullet Points)</option>
+                        <option value="Story or Narrative">داستان یا روایت</option>
+                    </select>
+                </div>
+
+                <button id="enhanceButton" aria-label="دکمه مهندسی پرامپت">
+                    <i class="fas fa-cogs"></i> جمنای، مهندسیش کن!
+                </button>
+
+                <div class="output-section">
+                    <h2><i class="fas fa-lightbulb-on"></i> پرامپت مهندسی‌شده توسط جمنای:</h2>
+                    <div id="loadingIndicator" class="loading" style="display: none;" aria-live="polite">
+                        <div class="spinner"></div>
+                        جمنای داره با دقت برات پردازش می‌کنه، یه کم صبر کن رفیق...
+                    </div>
+                    <div id="errorDisplay" class="error-message" style="display: none;" aria-live="assertive"></div>
+                    <div class="output-box-container">
+                        <div id="geminiOutput" class="output-box" aria-live="polite">
+                           برای شروع، ایده و نوع هوش مصنوعی مورد نظرت رو انتخاب کن و دکمه "جمنای، مهندسیش کن!" رو بزن!
+                        </div>
+                        <button id="copyButton" title="کپی کردن پرامپت مهندسی‌شده" style="display: none;" aria-label="کپی کردن پرامپت خروجی">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-panel" aria-labelledby="history-title">
+                <h2 id="history-title"><i class="fas fa-history"></i> تاریخچه پرامپت‌های خفن تو</h2>
+                <div id="historyContainer" class="history-items">
+                    <p class="empty-history-message">تاریخچه‌ات هنوز خالیه، اولین پرامپت خفنت رو بساز!</p>
+                    </div>
+                <button id="clearHistoryButton" style="display: none;" aria-label="پاک کردن کل تاریخچه پرامپت‌ها"><i class="fas fa-trash-alt"></i> پاک کردن کل تاریخچه</button>
+            </div>
+        </main>
+        <footer>
+            <p>قدرت گرفته از <i class="fas fa-infinity"></i> جمنای برای خلق ایده‌های بی‌نظیر تو! طراحی و توسعه با عشق ❤️</p>
+        </footer>
+    </div>
+
+    <script type="module">
+      // Using the latest recommended import method for GoogleGenerativeAI
+      import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+      // Make it available globally for script.js as it's not a module itself
+      window.GoogleGenerativeAI = GoogleGenerativeAI;
+    </script>
+
+    <script src="script.js"></script> </body>
+</html>
